@@ -56,7 +56,7 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#define DTYPE float
+#define DTYPE double
 #define ITYPE size_t // if chnage to unsigned int change the grid.x and gID in cuda kernel computation to long
 
 #include <vector>

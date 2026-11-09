@@ -56,6 +56,14 @@
 #ifndef __LAPACK_H
 #define __LAPACK_H
 
+// MM-CSF calls the single-precision names; with DTYPE double they must resolve to the double-precision routines
+#define spotrf_ dpotrf_
+#define spotrs_ dpotrs_
+#define ssyrk_  dsyrk_
+#define sgetrf_ dgetrf_
+#define sgetrs_ dgetrs_
+#define sgesv_  dgesv_
+
 #ifdef __cplusplus 	
 extern "C" {	
 #endif		
@@ -64,15 +72,15 @@ extern "C" {
 void spotrf_(
     char *,
     int *,
-    float *,
+    double *,
     int *,
     int *);
 void spotrs_(
     char *, int *,
     int *,
-    float *,
+    double *,
     int *,
-    float *,
+    double *,
     int *,
     int *);
 
@@ -82,18 +90,18 @@ void ssyrk_(
     char *,
     int *,
     int *,
-    float *,
-    float *,
+    double *,
+    double *,
     int *,
-    float *,
-    float *,
+    double *,
+    double *,
     int *);
 
 /* LU */
 void sgetrf_(
     int *,
     int *,
-    float *,
+    double *,
     int *,
     int *,
     int *);
@@ -101,19 +109,19 @@ void sgetrs_(
     char *,
     int *,
     int *,
-    float *,
+    double *,
     int *,
     int *,
-    float *,
+    double *,
     int *,
     int *);
 void sgesv_(
     int *,
     int *,
-    float *,
+    double *,
     int *,
     int *,
-    float *,
+    double *,
     int *,
     int *);
 
