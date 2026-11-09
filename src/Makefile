@@ -12,7 +12,7 @@ BLAS_INCLUDE_PATH=
 
 # CXXFLAGS=-O3 -std=c++11 -fopenmp -I${LAPACK_INCLUDE_PATH} -I${BLAS_INCLUDE_PATH} -DADD_  $(BOOSTFLAG)
 CXXFLAGS=-O3 -std=c++11 -fopenmp -DADD_  $(BOOSTFLAG)
-CXXLINKFLAGS= -llapack -lblas
+CXXLINKFLAGS= -lopenblas
 
 # NVCCFLAGS += -O3 -w -gencode arch=compute_70,code=sm_70 -Xptxas -dlcm=ca -Xcompiler -fopenmp --std=c++11 -m64 -lineinfo $(BOOSTFLAG)  -I${LAPACK_INCLUDE_PATH} -I${BLAS_INCLUDE_PATH} -DADD_ 
 NVCCFLAGS += -O3 -w -gencode arch=compute_90,code=sm_90 -Xptxas -dlcm=ca -Xcompiler -fopenmp --std=c++11 -m64 -lineinfo -DADD_ 
