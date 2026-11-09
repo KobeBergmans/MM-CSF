@@ -3855,6 +3855,7 @@ int init_GPU(TiledTensor *TiledX, Matrix *U, const Options &Opt, ITYPE **dInds2,
 	checkCuda(cudaMemcpy(*dU + szDU[0] + szDU[1], &(U[mode2].vals[0]), U[mode2].nRows * U[mode2].nCols * sizeof(DTYPE), cudaMemcpyHostToDevice), 0);
     // MTTKRP_MIHCSR_GPU_oneMode_forCPD(TiledX, U, Opt, 0, 0,
  	//  dInds2, dfbrPtr1, dfbrIdx1, dFbrLikeSlcInds, dVals, dU);
+    return 0;
 }
 
 int MTTKRP_MIHCSR_GPU_oneMode_forCPD(TiledTensor *TiledX, Matrix *U, const Options &Opt, int cpdMode, int iter,

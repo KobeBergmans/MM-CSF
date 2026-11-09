@@ -250,6 +250,7 @@ inline int check_opt(const Tensor &X, Options &Opt){
     if(Opt.impType == 11 || Opt.impType == 12 )
         Opt.mode = 0;
 
+    return 0;
 } 
 
 inline int order_tensormode(Tensor &X, const Options &Opt, const int mode){
@@ -308,6 +309,7 @@ inline int order_tensormode(Tensor &X, const Options &Opt, const int mode){
             cout << X.modeOrder[i] << " ";
         cout << endl;
     }
+    return 0;
 }
 
 inline int load_tensor(Tensor &X, const Options &Opt){
@@ -384,6 +386,7 @@ inline int init_tensor(Tensor *arrX, Tensor &X0, const Options &Opt, int mode){
         arrX[mode].dims[i] = X0.dims[i];
 
     order_tensormode(arrX[mode], Opt, mode);
+    return 0;
 }
 
 inline bool sort_pred_3D(tuple <ITYPE, ITYPE, ITYPE, DTYPE> left, 
@@ -461,6 +464,7 @@ inline int sort_COOtensor(Tensor &X){
             X.vals[idx] = get<4>(items[idx]);
         }
     }  
+    return 0;
 }
 
 inline int sort_MI_CSF(const Tensor &X, TiledTensor *MTX, int m){
@@ -524,6 +528,7 @@ inline int sort_MI_CSF(const Tensor &X, TiledTensor *MTX, int m){
         }
         }
     } 
+    return 0;
 }
 
 inline int create_hashtable(Tensor &X){
@@ -536,6 +541,7 @@ inline int create_hashtable(Tensor &X){
             X.fbrHashTbl[make_pair(X.fbrIdx[0][slc], X.fbrIdx[1][fbr])] = X.nnzPerFiber[fbr];
         }
     }
+    return 0;
 }
 
 inline int print_COOtensor(const Tensor &X){
@@ -547,6 +553,7 @@ inline int print_COOtensor(const Tensor &X){
             cout << X.inds[i][x] << " ";
         cout << X.vals[x]<< endl;
     }           
+    return 0;
 }
 
 inline int print_TiledCOO(const TiledTensor *TiledX, const int tile){
@@ -556,6 +563,7 @@ inline int print_TiledCOO(const TiledTensor *TiledX, const int tile){
             cout << TiledX[tile].inds[i][x] << " ";
         cout << endl;
     }        
+    return 0;
 }
 
 inline int print_HCSRtensor(const Tensor &X){
@@ -581,6 +589,7 @@ inline int print_HCSRtensor(const Tensor &X){
             }            
         }
     }
+    return 0;
 }
 
 inline int print_HCSRtensor_4D(const Tensor &X){
@@ -611,6 +620,7 @@ inline int print_HCSRtensor_4D(const Tensor &X){
             }          
         }
     }
+    return 0;
 }
 
 inline int print_HYBtensor(const HYBTensor &HybX){
@@ -662,6 +672,7 @@ inline int print_HYBtensor(const HYBTensor &HybX){
             }
         }
     }
+    return 0;
 }
 
 inline int print_TiledHCSRtensor(TiledTensor *TiledX, int tile){
@@ -711,6 +722,7 @@ inline int print_TiledHCSRtensor(TiledTensor *TiledX, int tile){
             }
         }
     }
+    return 0;
 }
 
 
@@ -755,6 +767,7 @@ inline int make_KTiling(const Tensor &X, TiledTensor *TiledX, Options &Opt){
         
         TiledX[tile].vals[idx] = X.vals[idx];    
     }  
+    return 0;
 }
 
 inline int create_HCSR(Tensor &X, const Options &Opt){
@@ -1533,6 +1546,7 @@ inline int compute_reuse(Tensor &X, const Options &Opt){
             cout << "reuse Fiber Bin "<<bin << ": " << reuseBin[bin] << endl;
     }
     cout << "avg reuse " << unqFbr << " " << X.nFibers << endl;
+    return 0;
 }
 inline int compute_reuse(TiledTensor *TiledX, const Options &Opt, int mode){
 
@@ -1632,6 +1646,7 @@ inline int compute_reuse(TiledTensor *TiledX, const Options &Opt, int mode){
             cout << "reuse Fiber Bin "<<bin << ": " << reuseBin[bin] << endl;
     }
     cout << "avg reuse " << usedFbr << " " << unqFbr <<" " << TiledX[mode].nFibers << endl;
+    return 0;
 }
 
 inline int compute_reuse_distance(Tensor &X, const Options &Opt){
@@ -1749,6 +1764,7 @@ inline int compute_reuse_distance(Tensor &X, const Options &Opt){
         for (int bin = 0; bin < Opt.nBin; ++bin)  
             cout << "reuse Fiber Bin "<<bin << ": " << distBin[bin] << endl;
     }
+    return 0;
 }
 
 
@@ -1763,6 +1779,7 @@ inline int create_fbrLikeSlcInds(Tensor &X, const Options &Opt){
             X.fbrLikeSlcInds[fbr] =   X.fbrIdx[0][slc] ;     
         }
     }
+    return 0;
 }
 
 inline int create_fbrLikeSlcInds(TiledTensor *TiledX, int mode){
@@ -1780,6 +1797,7 @@ inline int create_fbrLikeSlcInds(TiledTensor *TiledX, int mode){
         }
     }
     }
+    return 0;
 }
 
 // changed param to HYB
@@ -1882,6 +1900,7 @@ inline int make_HybBin(HYBTensor &X, const Options & Opt){
     //         cout << endl;
     //     }
     // }
+    return 0;
 }
 
 inline int make_TiledBin(TiledTensor *TiledX, const Options & Opt, int tile){
@@ -1949,6 +1968,7 @@ inline int make_TiledBin(TiledTensor *TiledX, const Options & Opt, int tile){
     //     for (int bin = 0; bin < Opt.nBin; ++bin)  
     //         cout << "Bin "<<bin << ": " << TiledX[tile].slcMapperBin[bin].size() << endl;
     // }
+    return 0;
 }
 
 inline int tensor_stats(const Tensor &X){
@@ -2523,6 +2543,7 @@ inline int mm_partition_reuseBased(Tensor *arrX, Tensor &X, TiledTensor *MTX, Op
             cout << "selected mode: " << mode << endl;
     }
     }
+    return 0;
 }
 // more detailed check
 // inline int mm_partition_reuseBased(Tensor *arrX, Tensor &X, TiledTensor *MTX, Options & Opt){

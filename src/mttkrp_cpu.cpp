@@ -82,6 +82,7 @@ int MTTKRP_COO_CPU(const Tensor &X, Matrix *U, const Options &Opt){
             U[mode0].vals[idx0 * R + r] += tmp_val;
         }
     }
+    return 0;
 }
 
 int MTTKRP_COO_CPU_4D(const Tensor &X, Matrix *U, const Options &Opt){
@@ -110,6 +111,7 @@ int MTTKRP_COO_CPU_4D(const Tensor &X, Matrix *U, const Options &Opt){
             U[mode0].vals[idx0 * R + r] += tmp_val;
         }
     }
+    return 0;
 }
 
 
@@ -153,6 +155,7 @@ int MTTKRP_HCSR_CPU_slc(const Tensor &X, const TiledTensor *TiledX, Matrix *U, c
         for(ITYPE r=0; r<R; ++r) 
              U0[idx0 * R + r] += tmp_val[r] * U1[idx1 * R + r];           
     }
+    return 0;
 }
 
 int MTTKRP_HCSR_CPU(const Tensor &X, const TiledTensor *TiledX, Matrix *U, const Options &Opt){
@@ -211,6 +214,7 @@ int MTTKRP_HCSR_CPU(const Tensor &X, const TiledTensor *TiledX, Matrix *U, const
                 U0[idx0 * R + r] += outBuffer[r];
         }
     }
+    return 0;
 }
 
 int MTTKRP_HCSR_CPU_mode1(const Tensor &X, Matrix *U, const Options &Opt, const int mode){
@@ -270,6 +274,7 @@ int MTTKRP_HCSR_CPU_mode1(const Tensor &X, Matrix *U, const Options &Opt, const 
             }
         }
     }
+    return 0;
 }
 
 /* MTTKRP on mode 2 using sorted tensor 0-1-2  */
@@ -345,6 +350,7 @@ int MTTKRP_HCSR_CPU_mode2(const Tensor &X, Matrix *U, const Options &Opt, const 
             }
         }
     }
+    return 0;
 }
 
 int MTTKRP_MIHCSR_CPU(const TiledTensor *TiledX, Matrix *U, const Options &Opt, const int mode){
@@ -414,6 +420,7 @@ int MTTKRP_MIHCSR_CPU(const TiledTensor *TiledX, Matrix *U, const Options &Opt, 
                 U0[idx0 * R + r] += outBuffer[r]; //IR
         }
     }
+    return 0;
 }
 
 
@@ -480,6 +487,7 @@ int MTTKRP_MIHCSR_CPU_FBR_ATOMICS(const TiledTensor *TiledX, Matrix *U, const Op
                 U0[idx0 * R + r] += tmp_val[r] * U2[idx2 * R + r]; //2PR
         }
     }
+    return 0;
 }
 
 /* MTTKRP on mode 1 using sorted tensor tile 2-0-1  */
@@ -535,6 +543,7 @@ int MTTKRP_MIHCSR_CPU_ALL_ATOMICS(const TiledTensor *TiledX, Matrix *U, const Op
             }
         }
     }
+    return 0;
 }
 
 int MTTKRP_HCSR_CPU_4D(const Tensor &X, Matrix *U, const Options &Opt){
@@ -595,6 +604,7 @@ int MTTKRP_HCSR_CPU_4D(const Tensor &X, Matrix *U, const Options &Opt){
                 U0[idx0 * R + r] += outBuffer[r];
         }
     }
+    return 0;
 }
 
 int MTTKRP_HYB_HCSR_CPU_4D(const HYBTensor &X, Matrix *U, const Options &Opt){
@@ -655,6 +665,7 @@ int MTTKRP_HYB_HCSR_CPU_4D(const HYBTensor &X, Matrix *U, const Options &Opt){
                 U0[idx0 * R + r] += outBuffer[r];
         }
     }
+    return 0;
 }
 
 int MTTKRP_HYB_COO_CPU_naive(const HYBTensor &HybX, Matrix *U, const Options &Opt){
@@ -683,6 +694,7 @@ int MTTKRP_HYB_COO_CPU_naive(const HYBTensor &HybX, Matrix *U, const Options &Op
             }
         }
     }
+    return 0;
 }
 
 int MTTKRP_HYB_COO_CPU_naive_4D(const HYBTensor &HybX, Matrix *U, const Options &Opt){
@@ -713,6 +725,7 @@ int MTTKRP_HYB_COO_CPU_naive_4D(const HYBTensor &HybX, Matrix *U, const Options 
             }
         }
     }
+    return 0;
 }
 
 int MTTKRP_HYB_HCSR_CPU(HYBTensor &X, Matrix *U, Options &Opt){
@@ -767,6 +780,7 @@ int MTTKRP_HYB_HCSR_CPU(HYBTensor &X, Matrix *U, Options &Opt){
                 U0[idx0 * R + r] += outBuffer[r];
         }
     }
+    return 0;
 }
 
 int MTTKRP_HYB_CSL_CPU( HYBTensor &HybX, Matrix *U, Options &Opt){
@@ -795,6 +809,7 @@ int MTTKRP_HYB_CSL_CPU( HYBTensor &HybX, Matrix *U, Options &Opt){
             }
         }
     }
+    return 0;
 }
 
 int MTTKRP_HYB_CPU( HYBTensor &HybX, Matrix *U, Options &Opt){
@@ -806,6 +821,7 @@ int MTTKRP_HYB_CPU( HYBTensor &HybX, Matrix *U, Options &Opt){
     // HCSR part
     MTTKRP_HYB_HCSR_CPU(HybX, U, Opt);
 
+    return 0;
 }
 
 int MTTKRP_HYB_CPU_4D( HYBTensor &HybX, Matrix *U, Options &Opt){
@@ -818,6 +834,7 @@ int MTTKRP_HYB_CPU_4D( HYBTensor &HybX, Matrix *U, Options &Opt){
     /* HCSR part */
     MTTKRP_HYB_HCSR_CPU_4D(HybX, U, Opt);
 
+    return 0;
 }
 
 int MTTKRP_TILED_COO_CPU(TiledTensor *TiledX, Matrix *U, const Options &Opt){
@@ -845,6 +862,7 @@ int MTTKRP_TILED_COO_CPU(TiledTensor *TiledX, Matrix *U, const Options &Opt){
             }
         }
     }
+    return 0;
 }
 
 int MTTKRP_TILED_HCSR_CPU(TiledTensor *TiledX, Matrix *U, const Options &Opt){
@@ -896,6 +914,7 @@ int MTTKRP_TILED_HCSR_CPU(TiledTensor *TiledX, Matrix *U, const Options &Opt){
             }
         }
     }
+    return 0;
 } 
 
 
@@ -959,6 +978,7 @@ int MTTKRP_TILED_HCSR_CPU_4D(TiledTensor *TiledX, Matrix *U, const Options &Opt)
             }
         }
     }
+    return 0;
 } 
 
 // int MTTKRP_HCSR_CPU_ASR(const Tensor &X, Matrix *U, ITYPE mode, ITYPE R){
