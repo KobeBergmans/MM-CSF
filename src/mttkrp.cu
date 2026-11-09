@@ -310,7 +310,7 @@ int main(int argc, char* argv[]){
 
         /*Collect slice and fiber stats: Create CSF for all modes*/
         bool slcNfbrStats = true;
-        int redunMode;
+        int redunMode = -1; // -1: no redundant mode. Uninitialized, the checks below read garbage and may skip building a mode
 
         Tensor *arrX = new Tensor[X.ndims]; 
 
