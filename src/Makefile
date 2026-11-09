@@ -2,18 +2,20 @@ CXX=g++
 # CXX=icc
 NVCC=nvcc
 NVCC_LIB_PATH=/usr/lib/x86_64-linux-gnu
-LAPACK_HOME=/users/PAS0134/osu1600/softwares/OpenBLAS
+# LAPACK_HOME=/users/PAS0134/osu1600/softwares/OpenBLAS
 # ri2
-BOOSTFLAG=-L/usr/local/boost/gnu/7.3/1.67.0/lib -I/home/nisa/Downloads/boost_1_69_0
+# BOOSTFLAG=-L/usr/local/boost/gnu/7.3/1.67.0/lib -I/home/nisa/Downloads/boost_1_69_0
 
-LAPACK_LIB_PATH=${LAPACK_HOME}/lib/
-LAPACK_INCLUDE_PATH=${LAPACK_HOME}/include/
+# LAPACK_LIB_PATH=${LAPACK_HOME}/lib/
+# LAPACK_INCLUDE_PATH=${LAPACK_HOME}/include/
 BLAS_INCLUDE_PATH=
 
-CXXFLAGS=-O3 -std=c++11 -fopenmp -I${LAPACK_INCLUDE_PATH} -I${BLAS_INCLUDE_PATH} -DADD_  $(BOOSTFLAG)
-CXXLINKFLAGS=-L${LAPACK_LIB_PATH} -lopenblas
+# CXXFLAGS=-O3 -std=c++11 -fopenmp -I${LAPACK_INCLUDE_PATH} -I${BLAS_INCLUDE_PATH} -DADD_  $(BOOSTFLAG)
+CXXFLAGS=-O3 -std=c++11 -fopenmp -DADD_  $(BOOSTFLAG)
+CXXLINKFLAGS= -llapack -lblas
 
-NVCCFLAGS += -O3 -w -gencode arch=compute_70,code=sm_70 -Xptxas -dlcm=ca -Xcompiler -fopenmp --std=c++11 -m64 -lineinfo $(BOOSTFLAG)  -I${LAPACK_INCLUDE_PATH} -I${BLAS_INCLUDE_PATH} -DADD_ 
+# NVCCFLAGS += -O3 -w -gencode arch=compute_70,code=sm_70 -Xptxas -dlcm=ca -Xcompiler -fopenmp --std=c++11 -m64 -lineinfo $(BOOSTFLAG)  -I${LAPACK_INCLUDE_PATH} -I${BLAS_INCLUDE_PATH} -DADD_ 
+NVCCFLAGS += -O3 -w -gencode arch=compute_90,code=sm_90 -Xptxas -dlcm=ca -Xcompiler -fopenmp --std=c++11 -m64 -lineinfo -DADD_ 
 NVCCLINKFLAGS = -L$(NVCC_LIB_PATH) -lcudart
 # nvcc -ccbin=/cm/shared/apps/intel/compilers_and_libraries_2016.3.210/linux/bin/intel64/icc -std=c++11 -o t912 t912.cu
 all: mttkrp ttm cpd
